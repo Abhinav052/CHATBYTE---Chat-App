@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
+
 const Login = () => {
   const [err, setErr] = React.useState(false);
   const navigate = useNavigate();
@@ -28,9 +29,11 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <button>Login</button>
+          <button style={{ cursor: "pointer" }}>Login</button>
         </form>
-        <p>Don't have an account? Sign Up</p>
+        <p>
+          Don't have an account?<Link to={"/register"}> Sign Up</Link>
+        </p>
       </div>
     </div>
   );

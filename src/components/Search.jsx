@@ -19,6 +19,7 @@ const Search = () => {
   const [user, setUser] = useState("");
   const [err, setErr] = useState("");
   const { currentUser } = React.useContext(AuthContext);
+
   const handleSearch = async () => {
     const q = query(collection(db, "users"), where("username", "==", username));
     try {
@@ -27,12 +28,13 @@ const Search = () => {
         setUser(doc.data());
       });
     } catch (error) {
-      setErr(error);
       console.log(error);
+      setErr(error);
     }
   };
   const handleKey = (e) => {
     if (e.code === "Enter") {
+      console.log("enter pressed");
       handleSearch();
     }
   };

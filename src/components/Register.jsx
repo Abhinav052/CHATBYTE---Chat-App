@@ -4,7 +4,7 @@ import pfp from "../images/register--pfp.svg";
 import { auth, storage, db } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 const Register = () => {
   console.log(auth);
   const [err, setErr] = React.useState(false);
@@ -66,11 +66,15 @@ const Register = () => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <img src={pfp} alt="" />
-            <span style={{ marginLeft: "10px" }}>Upload Display Picture</span>
+            <span style={{ marginLeft: "10px", cursor: "pointer" }}>
+              Upload Display Picture
+            </span>
           </label>
-          <button>Sign Up</button>
+          <button style={{ cursor: "pointer" }}>Sign Up</button>
         </form>
-        <p>Already have an account? Login</p>
+        <p>
+          Already have an account? <Link to={"/login"}> Login</Link>
+        </p>
       </div>
     </div>
   );
