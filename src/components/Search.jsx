@@ -56,6 +56,14 @@ const Search = () => {
           },
           [combinedId + ".date"]: serverTimestamp(),
         });
+        await updateDoc(doc(db, "userChat", user.uid), {
+          [combinedId + ".userInfo"]: {
+            uid: currentUser.uid,
+            username: currentUser.displayName,
+            photoURL: currentUser.photoURL,
+          },
+          [combinedId + ".date"]: serverTimestamp(),
+        });
       }
       setUser("");
       setUsername("");
